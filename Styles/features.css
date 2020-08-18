@@ -1,0 +1,42 @@
+/*!
+ * Start Bootstrap - Heroic Features (https://startbootstrap.com/templates/heroic-features)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-heroic-features/blob/master/LICENSE)
+ */
+.logo-image{
+  width: 100px;
+  height: 80px;
+  border-radius: 100%;
+  margin-top: 1px;
+}
+
+body {
+  padding-top: 56px;
+}
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+}
+
+@media (max-width: 629px) {
+  img#optionalpic {
+    display:none;
+  }
+  div#optionaltext {
+    display:none;
+  }
+  nav#optionalnav {
+    display:none;  
+  }
+  h1 {
+    font-size: 3em !important;
+  }
+}
+
+@media (min-width: 630px) {
+  img#smallpic {
+    display:none;
+  }
+}
