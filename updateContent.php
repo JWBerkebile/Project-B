@@ -75,6 +75,7 @@
 			$manufacturer = $row["manufacturer"];
 			$machineName = $row["machineName"];
 			$cost = $row["cost"];
+			$Quantity = $row["Quantity"];
 
 
 		}
@@ -113,7 +114,6 @@
 				<input type="text" name="partName" id="partName" value="<?php echo $partName;?>"> 
 				</p>
 				<br/>
-
 				<p style="font-size: 20px; font-weight: bold">Enter Part Number &nbsp; &nbsp;
 				<input type="text" name="partNumber" id="partNumber" value="<?php echo $partNumber;?>"> 
 				</p>
@@ -126,8 +126,12 @@
 				<input type="text" name="machineName" id="machineName" value="<?php echo $machineName;?>">
                 </p>
                 <br/>
-                <p style="font-size: 20px; font-weight: bold">Enter Cost &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <p style="font-size: 20px; font-weight: bold">Enter Cost &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 				<input type="text" name="cost" id="cost" value="<?php echo $cost;?>">
+				</p>
+				<br/>
+				<p style="font-size: 20px; font-weight: bold">Enter Quantity &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				<input type="text" name="Quantity" id="Quantity" value="<?php echo $Quantity;?>">
 				</p>
 				<br/>
 			</center>

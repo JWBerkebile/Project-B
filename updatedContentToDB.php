@@ -57,12 +57,13 @@ $partNumber = htmlspecialchars($_POST['partNumber']);
 $manufacturer = htmlspecialchars($_POST['manufacturer']);
 $machineName= htmlspecialchars($_POST['machineName']);
 $cost = htmlspecialchars($_POST['cost']);
+$Quantity = htmlspecialchars($_POST['Quantity']);
 
 
 //Database connection
 require_once("databaseConnect.php");
 
-$sql = "UPDATE `content` SET `partName` = '$partName', `partNumber` = '$partNumber', `manufacturer` = '$manufacturer', `machineName` = '$machineName', `cost` = '$cost' WHERE `content`.`id` = $id";
+$sql = "UPDATE `content` SET `partName` = '$partName', `partNumber` = '$partNumber', `manufacturer` = '$manufacturer', `machineName` = '$machineName', `cost` = '$cost', `Quantity` = '$Quantity' WHERE `content`.`id` = $id";
 
 if (mysqli_query($conn, $sql)) {
     echo "<font size = '20' face = 'Arial'>"; 

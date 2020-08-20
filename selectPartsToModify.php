@@ -54,9 +54,7 @@
 require_once("databaseConnect.php");
 
 
-
-$sql = "SELECT * FROM content";                   //Select everything from content table
-
+$sql = "SELECT id, partName, partNumber, manufacturer, machineName, cost, Quantity, cost * Quantity as Total FROM content";                    //Select everything from content table
 
 if($result = mysqli_query($conn, $sql)) {
 
@@ -70,6 +68,8 @@ if($result = mysqli_query($conn, $sql)) {
                 echo "<th>Manufacturer</th>";
                 echo "<th>Machine Name</th>";
                 echo "<th>Cost</th>";
+                echo "<th>Quantity</th>";
+                echo "<th>Total</th>";                                  
                 echo "<th>Delete Content</th>";
             echo "</tr>";
 
@@ -80,7 +80,9 @@ if($result = mysqli_query($conn, $sql)) {
                     echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['partNumber'] . "</a>" . "</td>";  
                     echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['manufacturer'] . "</a>" . "</td>"; 
                     echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['machineName'] . "</a>" . "</td>";
-                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['cost'] . "</a>" . "</td>"; 
+                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['cost'] . "</a>" . "</td>";
+                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['Quantity'] . "</a>" . "</td>";
+                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['Total'] . "</a>" . "</td>";  
                     echo "<td>" . "<a href=" . "deleteContent.php?page=" . $row['id'] . ">" .  "Delete Content" . "</a>" . "</td>"; 
                 echo "</tr>";
 
