@@ -42,19 +42,22 @@
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
         <h1 class="display-3">X-Tra Life Parts Tracking</h1>
-        <h1 class="display-3">Modify Parts</h1>
+        <h1 class="display-3">Manufacturer Search</h1>
         <p class="lead">Track and edit parts from virtually anywhere!</p>
         <a href="XtraLifeLogin.html" class="btn btn-primary btn-lg">Logout</a>
-        <a href="InventoryEdit.html" class="btn btn-primary btn-lg">Back</a>
+        <a href="XtraLifeTechHome.html" class="btn btn-primary btn-lg">Back</a>
       </header>
 
 <?php
 
+ini_set('display_errors', 1);
+
+$manSearch = htmlspecialchars($_POST['manSearch']);
+
 //Database connection
 require_once("databaseConnect.php");
 
-
-$sql = "SELECT id, partName, partNumber, manufacturer, machineName, cost, Quantity, cost * Quantity as Total FROM content";                    //Select everything from content table
+$sql = "SELECT id, partName, partNumber, manufacturer, machineName, cost, Quantity, cost * Quantity as Total FROM content WHERE manufacturer LIKE '%$manSearch%'";  //Select everything from content table matching entered manufacturer name
 
 if($result = mysqli_query($conn, $sql)) {
 
@@ -70,20 +73,20 @@ if($result = mysqli_query($conn, $sql)) {
                 echo "<th>Cost</th>";
                 echo "<th>Quantity</th>";
                 echo "<th>Total</th>";                                  
-                echo "<th>Delete Row</th>";
+                echo "<th>Remove</th>";
             echo "</tr>";
 
             while($row = mysqli_fetch_array($result)) {
                 echo "<tr>";
-                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['id'] . "</a>" . "</td>"; 
-                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['partName'] . "</a>" . "</td>"; 
-                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['partNumber'] . "</a>" . "</td>";  
-                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['manufacturer'] . "</a>" . "</td>"; 
-                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['machineName'] . "</a>" . "</td>";
-                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['cost'] . "</a>" . "</td>";
-                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['Quantity'] . "</a>" . "</td>";
-                    echo "<td>" . "<a href=" . "updateContent.php?page=" . $row['id'] . ">" .  $row['Total'] . "</a>" . "</td>";  
-                    echo "<td>" . "<a href=" . "deleteContent.php?page=" . $row['id'] . ">" .  "Delete Row" . "</a>" . "</td>"; 
+                    echo "<td>" .  $row['id'] . "</td>"; 
+                    echo "<td>" .  $row['partName'] . "</td>"; 
+                    echo "<td>" .  $row['partNumber'] . "</td>";  
+                    echo "<td>" .  $row['manufacturer'] . "</td>"; 
+                    echo "<td>" .  $row['machineName'] . "</td>";
+                    echo "<td>" .  $row['cost'] . "</td>";
+                    echo "<td>" .  $row['Quantity'] . "</td>";
+                    echo "<td>" .  $row['Total'] . "</td>";  
+                    echo "<td>" . "<a href=" . "removeInventory.php?page=" . $row['id'] . ">" .  "Remove 1 From Inventory" . "</a>" . "</td>"; 
                 echo "</tr>";
 
                 }
@@ -95,6 +98,7 @@ if($result = mysqli_query($conn, $sql)) {
     }
 
     else {
+        echo "<font size = '20' face = 'Arial'>"; 
         echo "No records matching your search.";
     }
 

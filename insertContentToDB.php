@@ -59,6 +59,8 @@ $manufacturer = htmlspecialchars($_POST['manufacturer']);
 $machineName = htmlspecialchars($_POST['machineName']);
 $cost = htmlspecialchars($_POST['cost']);
 $Quantity = htmlspecialchars($_POST['Quantity']);
+$Total = '0';
+
 
 //Connecting to database
 require_once("databaseConnect.php");
@@ -67,7 +69,7 @@ require_once("databaseConnect.php");
 //INSERT INTO `content` (`partName`, `partNumber`, `manufacturer`, `machineName`, `cost`) VALUES (NULL, 'Test', 'Test', 'Test', 'Test', 'Test');
 
 //SQL Command
-$sql = "INSERT INTO content(partName,partNumber,manufacturer,machineName,cost,Quantity) VALUES ('$partName', '$partNumber', '$manufacturer', '$machineName', '$cost', '$Quantity')";
+$sql = "INSERT INTO content(partName,partNumber,manufacturer,machineName,cost,Quantity,Total) VALUES ('$partName', '$partNumber', '$manufacturer', '$machineName', '$cost', '$Quantity', '$Total')";
 
 //Adjusting to larger font size for visual confirmation
 if(mysqli_query($conn, $sql))   {

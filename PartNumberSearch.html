@@ -47,13 +47,14 @@
       </header>
 
       <!-- Page Features -->
-      <div class="form-group form-row">
-        <label for="part-number" class="col-form-label col-form-label-sm">Enter Part Number</label>
-        <input type="number" class="form-control form-control-sm" id="part-number">
+      <form name="searchForm" method="post" action="numberSearch.php">
+        <div class="form-group form-row">
+				<p style="font-size: 20px; font-weight: bold">Enter Part Number &nbsp; &nbsp; &nbsp; &nbsp; 
+          <input type="text" name="numSearch" id="numSearch"> 
+          </p>
       </div>
         <div class="col-4">
-          <form method="POST" action="#">
-            <a href="#" class="btn btn-primary btn-lg">Search</a>
+            <a class="btn btn-primary btn-lg"><input style="font-size: 20px": type="submit" value="Submit"></a>  
           </form>
         </div>
        </div>

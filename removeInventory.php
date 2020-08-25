@@ -42,34 +42,36 @@
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
         <h1 class="display-3">X-Tra Life Parts Tracking</h1>
-        <h1 class="display-3">Delete Parts</h1>
+        <h1 class="display-3">Remove Parts</h1>
         <p class="lead">Track and edit parts from virtually anywhere!</p>
         <a href="XtraLifeLogin.html" class="btn btn-primary btn-lg">Logout</a>
-        <a href="selectPartsToModify.html" class="btn btn-primary btn-lg">Back</a>
+        <a href="XtraLifeTechHome.html" class="btn btn-primary btn-lg">Back</a>
       </header>
 
 
 
 <?php
 
+$id = htmlspecialchars($_POST['content_id']);         //This is the primary key in the content db table to perform the UPDATE
+
 require_once("databaseConnect.php");
 
 
-$id = htmlspecialchars($_GET['page']);                      //Get the user id to delete from the database from the prior screen GET method
+$id = htmlspecialchars($_GET['page']);                      //Get the user id to update from the database from the prior screen GET method
 
 
-//sql to delete the record
+//sql to remove part from inventory
 
-$sql = "DELETE FROM content WHERE id='$id'";                //query string to use
+$sql = "UPDATE content SET Quantity = Quantity - 1 WHERE content.id = $id";
 
 if(mysqli_query($conn, $sql)) {
     echo "<font size = '20' face = 'Arial'>";
     echo "</br>";
-    echo "Record deleted successfully!";
+    echo "Item removed successfully!";
 }
 
 else {
-    echo "Error deleting record: " . mysqli_error($conn);
+    echo "Error updating record: " . mysqli_error($conn);
 }
 
 mysqli_close($conn);
